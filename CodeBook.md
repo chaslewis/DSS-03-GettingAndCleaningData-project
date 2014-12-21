@@ -590,13 +590,13 @@ Test and train activity labels, y_test.txt and y_train.txt, are each just a sing
 
 Test and train subject labels, subject_test.txt and subject_train.txt, are each just a single column of numbers identifying the subject (human individual) carrying the device providing the observation.  
 
-The actual data sets, X_test.txt and X_train.txt, are rows of 561 floating point numbers corresponding to the features identified above (per column).  Each row is an observation which is identified by the labels in the two associated files (y_*.txt and subject_*.txt).
+The actual data sets, X_test.txt and X_train.txt, are rows of 561 floating point numbers corresponding to the features identified above (per column).  Each row is an observation which is identified by the labels in the two associated files (y_\*.txt and subject_\*.txt).
 
 There are 7352 observations in the training set and 2947 in the test set, for a total of 10,299 observations in the combined data set.
 
 After processing, the dta_tidy and dta_summ DFs have this structure:
 |column name| note |
-|-----------|
+|-----------|------|
 |activity.name         | descriptive name ("WALKING", "LAYING", etc.) from activity_labels |
 |subject.id            | numeric subject id (subjects remain anonymous) |
 |tBodyAcc.mean..X      | body acceleration mean, X-axis, time-domain | 
@@ -664,7 +664,8 @@ After processing, the dta_tidy and dta_summ DFs have this structure:
 |fBodyAccMag.std.      | body acceleration magnitude std, freq-domain |      
 |fBodyAccJerkMag.std.  | body acceleration jerk magnitude std, freq-domain | 
 |fBodyGyroMag.std.     | body gyro magnitude std, freq-domain |              
-|fBodyGyroJerkMag.std. | body gyro jerk magnitude std, freq-domain |         
+|fBodyGyroJerkMag.std. | body gyro jerk magnitude std, freq-domain |
+      
 the feature values are normalized to a range of [-1,1], and as such are dimensionless (no units).
 
 The tidied detail table preserves the original observations and as such has 10,299 rows, while the summary table has compressed all observations for each activity-subject combination and therefore has 180 rows (30 subjects * 6 activities).
