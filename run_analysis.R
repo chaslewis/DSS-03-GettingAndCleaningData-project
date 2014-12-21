@@ -92,7 +92,11 @@ dta_means <- select(dta_all, contains(".mean."))
 dta_stds <- select(dta_all, contains(".std."))
 
 # ... and combine these in a tidy table with the two labels (activity name and subject id)
-dta_tidy <- cbind(activity.name=dta_all$activity.name, subject.id=dta_all$subject.id, dta_means, dta_stds, stringsAsFactors=FALSE)
+dta_tidy <- cbind(activity.name=dta_all$activity.name, 
+                  subject.id=dta_all$subject.id, 
+                  dta_means, 
+                  dta_stds, 
+                  stringsAsFactors=FALSE)
 
 # rubric Step 5:
 # finally, summarize the data by taking the mean of all the observations for each variable
