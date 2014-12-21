@@ -667,7 +667,8 @@ After processing, the dta_tidy and dta_summ DFs have this structure:
 |fBodyGyroMag.std.     | body gyro magnitude std, freq-domain |              
 |fBodyGyroJerkMag.std. | body gyro jerk magnitude std, freq-domain |
       
-the feature values are normalized to a range of [-1,1], and as such are dimensionless (no units).
+The feature values are normalized to a range of [-1,1], and as such are dimensionless (no units).
+(As an aside, "jerk" is the rate of change of acceleration, as desribed [here](http://en.wikipedia.org/wiki/Jerk_(physics)).)
 
 The tidied detail table preserves the original observations and as such has 10,299 rows, while the summary table has compressed all observations for each activity-subject combination and therefore has 180 rows (30 subjects * 6 activities).
 
