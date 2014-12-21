@@ -35,7 +35,7 @@ When extracted, the UCI dataset produces this file structure, which is assumed t
     
 In the top level of the dataset tree, README.txt gives some context for the study and an overview of the organization of the dataset across the various files, while features_info.txt provides a more detailed explanation of the feature observations (sensor readings) that were gathered.
 
-The general goal of the script is to combine the provided data tables horizontally and vertically as appropriate, and to assign meaningful (or at least more usable) names to columns and labels.  Only a subset (the 33 mean and 33 standard deviation variables) of the feature columns will be extracted from the 561-column total.  (See [CodeBook.md}(CodeBook.md) for more detail on these identifiers.)
+The general goal of the script is to combine the provided data tables horizontally and vertically as appropriate, and to assign meaningful (or at least more usable) names to columns and labels.  Only a subset (the 33 mean and 33 standard deviation variables) of the feature columns will be extracted from the 561-column total.  (See [CodeBook.md](CodeBook.md) for more detail on these identifiers.)
 
 In particular:
 
