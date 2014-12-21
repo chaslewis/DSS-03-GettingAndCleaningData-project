@@ -584,6 +584,7 @@ The meaning of these features is described in more detail in the file features_i
 - time domain (observed) vs. frequency domain (obtained by applying FFT): initial 't' or 'f'
 - type of measurement: 'Acc' => acceleration (accelerometer), "Gyro' => orientation (gyroscope)
 - type of statistic: mean, std, max, min, etc.
+- three dimensional axis of measurement (X, Y, or Z)
 
 Test and train activity labels, y_test.txt and y_train.txt, are each just a single column of numbers identifying the activity for the corresponding row in the data set.  These values can be mapped to a descriptive name using the activity_label table (described above).
 
@@ -594,73 +595,79 @@ The actual data sets, X_test.txt and X_train.txt, are rows of 561 floating point
 There are 7352 observations in the training set and 2947 in the test set, for a total of 10,299 observations in the combined data set.
 
 After processing, the dta_tidy and dta_summ DFs have this structure:
-|column name|
+|column name| note |
 |-----------|
-|activity.name         |
-|subject.id            |
-|tBodyAcc.mean..X      |
-|tBodyAcc.mean..Y      |
-|tBodyAcc.mean..Z      |
-|tGravityAcc.mean..X   |
-|tGravityAcc.mean..Y   |
-|tGravityAcc.mean..Z   |
-|tBodyAccJerk.mean..X  |
-|tBodyAccJerk.mean..Y  |
-|tBodyAccJerk.mean..Z  |
-|tBodyGyro.mean..X     |
-|tBodyGyro.mean..Y     |
-|tBodyGyro.mean..Z     |
-|tBodyGyroJerk.mean..X |
-|tBodyGyroJerk.mean..Y |
-|tBodyGyroJerk.mean..Z |
-|tBodyAccMag.mean.     |
-|tGravityAccMag.mean.  |
-|tBodyAccJerkMag.mean. |
-|tBodyGyroMag.mean.    |
-|tBodyGyroJerkMag.mean.|
-|fBodyAcc.mean..X      |
-|fBodyAcc.mean..Y      |
-|fBodyAcc.mean..Z      |
-|fBodyAccJerk.mean..X  |
-|fBodyAccJerk.mean..Y  |
-|fBodyAccJerk.mean..Z  |
-|fBodyGyro.mean..X     |
-|fBodyGyro.mean..Y     |
-|fBodyGyro.mean..Z     |
-|fBodyAccMag.mean.     |
-|fBodyAccJerkMag.mean. |
-|fBodyGyroMag.mean.    |
-|fBodyGyroJerkMag.mean.|
-|tBodyAcc.std..X       |
-|tBodyAcc.std..Y       |
-|tBodyAcc.std..Z       |
-|tGravityAcc.std..X    |
-|tGravityAcc.std..Y    |
-|tGravityAcc.std..Z    |
-|tBodyAccJerk.std..X   |
-|tBodyAccJerk.std..Y   |
-|tBodyAccJerk.std..Z   |
-|tBodyGyro.std..X      |
-|tBodyGyro.std..Y      |
-|tBodyGyro.std..Z      |
-|tBodyGyroJerk.std..X  |
-|tBodyGyroJerk.std..Y  |
-|tBodyGyroJerk.std..Z  |
-|tBodyAccMag.std.      |
-|tGravityAccMag.std.   |
-|tBodyAccJerkMag.std.  |
-|tBodyGyroMag.std.     |
-|tBodyGyroJerkMag.std. |
-|fBodyAcc.std..X       |
-|fBodyAcc.std..Y       |
-|fBodyAcc.std..Z       |
-|fBodyAccJerk.std..X   |
-|fBodyAccJerk.std..Y   |
-|fBodyAccJerk.std..Z   |
-|fBodyGyro.std..X      |
-|fBodyGyro.std..Y      |
-|fBodyGyro.std..Z      |
-|fBodyAccMag.std.      |
-|fBodyAccJerkMag.std.  |
-|fBodyGyroMag.std.     |
-|fBodyGyroJerkMag.std. |
+|activity.name         | descriptive name ("WALKING", "LAYING", etc.) from activity_labels |
+|subject.id            | numeric subject id (subjects remain anonymous) |
+|tBodyAcc.mean..X      | body acceleration mean, X-axis, time-domain | 
+|tBodyAcc.mean..Y      | body acceleration mean, Y-axis, time-domain | 
+|tBodyAcc.mean..Z      | body acceleration mean, Z-axis, time-domain | 
+|tGravityAcc.mean..X   | gravity acceleration mean, X-axis, time-domain | 
+|tGravityAcc.mean..Y   | gravity acceleration mean, Y-axis, time-domain | 
+|tGravityAcc.mean..Z   | gravity acceleration mean, Z-axis, time-domain | 
+|tBodyAccJerk.mean..X  | body acceleration jerk mean, X-axis, time-domain | 
+|tBodyAccJerk.mean..Y  | body acceleration jerk mean, Y-axis, time-domain | 
+|tBodyAccJerk.mean..Z  | body acceleration jerk mean, Z-axis, time-domain | 
+|tBodyGyro.mean..X     | body gyro mean, X-axis, time-domain | 
+|tBodyGyro.mean..Y     | body gyro mean, Y-axis, time-domain | 
+|tBodyGyro.mean..Z     | body gyro mean, Z-axis, time-domain | 
+|tBodyGyroJerk.mean..X | body gyro jerk mean, X-axis, time-domain | 
+|tBodyGyroJerk.mean..Y | body gyro jerk mean, Y-axis, time-domain | 
+|tBodyGyroJerk.mean..Z | body gyro jerk mean, Z-axis, time-domain | 
+|tBodyAccMag.mean.     | body acceleration magnitude mean, time-domain | 
+|tGravityAccMag.mean.  | gravity acceleration magnitude mean, time-domain | 
+|tBodyAccJerkMag.mean. | body acceleration jerk magnitude mean, time-domain | 
+|tBodyGyroMag.mean.    | body gyro magnitude mean, time-domain | 
+|tBodyGyroJerkMag.mean.| body gyro jerk magnitude mean, time-domain | 
+|fBodyAcc.mean..X      | body acceleration mean, X-axis, freq-domain |        
+|fBodyAcc.mean..Y      | body acceleration mean, Y-axis, freq-domain |        
+|fBodyAcc.mean..Z      | body acceleration mean, Z-axis, freq-domain |        
+|fBodyAccJerk.mean..X  | body acceleration jerk mean, X-axis, freq-domain |   
+|fBodyAccJerk.mean..Y  | body acceleration jerk mean, Y-axis, freq-domain |   
+|fBodyAccJerk.mean..Z  | body acceleration jerk mean, Z-axis, freq-domain |   
+|fBodyGyro.mean..X     | body gyro mean, X-axis, freq-domain |                
+|fBodyGyro.mean..Y     | body gyro mean, Y-axis, freq-domain |                
+|fBodyGyro.mean..Z     | body gyro mean, Z-axis, freq-domain |                
+|fBodyAccMag.mean.     | body acceleration magnitude mean, freq-domain |       
+|fBodyAccJerkMag.mean. | body acceleration jerk magnitude mean, freq-domain | 
+|fBodyGyroMag.mean.    | body gyro magnitude mean, freq-domain |               
+|fBodyGyroJerkMag.mean.| body gyro jerk magnitude mean, freq-domain |          
+|tBodyAcc.std..X       | body acceleration std, X-axis, time-domain |        
+|tBodyAcc.std..Y       | body acceleration std, Y-axis, time-domain |       
+|tBodyAcc.std..Z       | body acceleration std, Z-axis, time-domain |       
+|tGravityAcc.std..X    | gravity acceleration std, X-axis, time-domain |    
+|tGravityAcc.std..Y    | gravity acceleration std, Y-axis, time-domain |    
+|tGravityAcc.std..Z    | gravity acceleration std, Z-axis, time-domain |    
+|tBodyAccJerk.std..X   | body acceleration jerk std, X-axis, time-domain |  
+|tBodyAccJerk.std..Y   | body acceleration jerk std, Y-axis, time-domain |  
+|tBodyAccJerk.std..Z   | body acceleration jerk std, Z-axis, time-domain |  
+|tBodyGyro.std..X      | body gyro std, X-axis, time-domain |               
+|tBodyGyro.std..Y      | body gyro std, Y-axis, time-domain |               
+|tBodyGyro.std..Z      | body gyro std, Z-axis, time-domain |               
+|tBodyGyroJerk.std..X  | body gyro jerk std, X-axis, time-domain |          
+|tBodyGyroJerk.std..Y  | body gyro jerk std, Y-axis, time-domain |          
+|tBodyGyroJerk.std..Z  | body gyro jerk std, Z-axis, time-domain |          
+|tBodyAccMag.std.      | body acceleration magnitude std, time-domain |     
+|tGravityAccMag.std.   | gravity acceleration magnitude std, time-domain |  
+|tBodyAccJerkMag.std.  | body acceleration jerk magnitude std, time-domain |
+|tBodyGyroMag.std.     | body gyro magnitude std, time-domain |             
+|tBodyGyroJerkMag.std. | body gyro jerk magnitude std, time-domain |        
+|fBodyAcc.std..X       | body acceleration std, X-axis, freq-domain |         
+|fBodyAcc.std..Y       | body acceleration std, Y-axis, freq-domain |        
+|fBodyAcc.std..Z       | body acceleration std, Z-axis, freq-domain |        
+|fBodyAccJerk.std..X   | body acceleration jerk std, X-axis, freq-domain |   
+|fBodyAccJerk.std..Y   | body acceleration jerk std, Y-axis, freq-domain |   
+|fBodyAccJerk.std..Z   | body acceleration jerk std, Z-axis, freq-domain |   
+|fBodyGyro.std..X      | body gyro std, X-axis, freq-domain |                
+|fBodyGyro.std..Y      | body gyro std, Y-axis, freq-domain |                
+|fBodyGyro.std..Z      | body gyro std, Z-axis, freq-domain |                
+|fBodyAccMag.std.      | body acceleration magnitude std, freq-domain |      
+|fBodyAccJerkMag.std.  | body acceleration jerk magnitude std, freq-domain | 
+|fBodyGyroMag.std.     | body gyro magnitude std, freq-domain |              
+|fBodyGyroJerkMag.std. | body gyro jerk magnitude std, freq-domain |         
+the feature values are normalized to a range of [-1,1], and as such are dimensionless (no units).
+
+The tidied detail table preserves the original observations and as such has 10,299 rows, while the summary table has compressed all observations for each activity-subject combination and therefore has 180 rows (30 subjects * 6 activities).
+
+
+
