@@ -56,18 +56,17 @@ test_act <- read.table(paste(data_dir, "test/", "y_test.txt", sep=''), header=FA
 test_subj <- read.table(paste(data_dir, "test/", "subject_test.txt", sep=''),  
                         header=FALSE, stringsAsFactors=FALSE)
 test_obs <- read.table(paste(data_dir, "test/", "X_test.txt", sep=''), header=FALSE, 
-                        stringsAsFactors=FALSE)
+                       stringsAsFactors=FALSE)
 
 # same process for training set: read  activity labels, subject labels, and observations
 train_act <- read.table(paste(data_dir, "train/", "y_train.txt", sep=''), header=FALSE,
-                     stringsAsFactors=FALSE)
+                        stringsAsFactors=FALSE)
 train_subj <- read.table(paste(data_dir, "train/", "subject_train.txt", sep=''), 
-                        header=FALSE, stringsAsFactors=FALSE)
+                         header=FALSE, stringsAsFactors=FALSE)
 train_obs <- read.table(paste(data_dir, "train/", "X_train.txt", sep=''), header=FALSE, 
                         stringsAsFactors=FALSE)
 
-# for each set, test and training, combine the observations with the two identifying 
-#   labels
+# for each set, test and training, combine the observations with the two identifying labels
 dta_test <- cbind(test_obs, test_act, test_subj)
 dta_train <- cbind(train_obs, train_act, train_subj)
 
@@ -76,7 +75,7 @@ dta_train <- cbind(train_obs, train_act, train_subj)
 dta_both <- rbind(dta_test, dta_train)
 
 # rubric Step 4:
-# apply tidy variable names to the columns of the data: features and 2 labels
+# apply tidy variable names to the columns of the data: 561 feature variables and 2 labels
 colnames(dta_both) <- c(features$feat.name.tidy, "activity.id", "subject.id")
 
 # rubric Step 3:
