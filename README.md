@@ -31,20 +31,20 @@ When extracted, the UCI dataset produces this file structure, which is assumed t
         \---Inertial Signals
                 ... (detail omitted)
 
-(The "Inertial Signals" folders contain derived values which are not needed here.)        
+(The "Inertial Signals" folders contain the raw sensor measurements which are not needed here.)        
     
 In the top level of the dataset tree, README.txt gives some context for the study and an overview of the organization of the dataset across the various files, while features_info.txt provides a more detailed explanation of the feature observations (sensor readings) that were gathered.
 
-The general goal of the script is to combine the provided data tables horizontally and vertically as appropriate, and to assign meaningful names (or at least more useable) names to columns and labels.  Only a subset (the 33 mean and 33 standard deviation variables) of the feature columns will be extracted from the 561-column total.
+The general goal of the script is to combine the provided data tables horizontally and vertically as appropriate, and to assign meaningful (or at least more usable) names to columns and labels.  Only a subset (the 33 mean and 33 standard deviation variables) of the feature columns will be extracted from the 561-column total.  (See [CodeBook.md}(CodeBook.md) for more detail on these identifiers.)
 
 In particular:
 
-1. The activity_labels.txt file is read into a data frame which will be used to match the numeric activity label (1, 2, 3, 4, 5, 6), which appears as a label in the actual data, to the corresponding activity description.
+1. The activity_labels.txt file is read into a data frame which will be used to match the numeric activity label, which appears as a label in the actual data, to the corresponding activity description.
 2. The features.txt file is read into a data frame with two columns: feature id (just the column number in the corresponding data file) and feature name (an untidy identifier).
 3. The feature names in the feature data frame are tidied:
-        - In keeping with common R usage, punctuation (mainly hyphens, parentheses and commas) are replaced by periods.
-        - A typo in a subset of the names is fixed ("BodyBody" is replaced by "Body).
-        - Missing dimensional identifiers (denoting X, Y, and Z) are appended within three blocks of names; as provided, these would appear as duplicate columns (no good).
+    - In keeping with common R usage, punctuation (mainly hyphens, parentheses and commas) are replaced by periods.
+    - A typo in a subset of the names is fixed ("BodyBody" is replaced by "Body").
+    - Missing dimensional identifiers (denoting X, Y, and Z) are appended within three blocks of names; as provided,these would appear as duplicate columns (which poses serious problems for R).
 4. The activity labels for the test set are read into a data frame (one per row/observation).
 5. The subject labels for the test set are read into a data frame (one per row/observation).
 6. The 561 values per row/observation for the test data set are read into a data frame.
