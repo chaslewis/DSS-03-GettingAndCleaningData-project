@@ -7,8 +7,30 @@ The [UC Irvine Machine Learning Repository](http://archive.ics.uci.edu/ml/index.
 
 The R script provided here [run_analysis.R](run_analysis.R) gathers and transforms the raw data into a single tidy table, the design of which was guided by Hadley Wickham's principles of [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf), and also creates a summary data table by summarizing various measures by label group (details below).
 
+When extracted, the UCI dataset produces this file structure, which is assumed to reside in the working directory of our script:
 
-
+        UCI HAR Dataset
+    |   activity_labels.txt
+    |   features.txt
+    |   features_info.txt
+    |   README.txt
+    |   
+    +---test
+    |   |   subject_test.txt
+    |   |   X_test.txt
+    |   |   y_test.txt
+    |   |   
+    |   \---Inertial Signals
+    |           ... (detail omitted)
+    |           
+    \---train
+        |   subject_train.txt
+        |   X_train.txt
+        |   y_train.txt
+        |   
+        \---Inertial Signals
+                ... (detail omitted)
+    
 
 
 
