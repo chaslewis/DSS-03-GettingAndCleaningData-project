@@ -31,7 +31,7 @@ When extracted, the UCI dataset produces this file structure, which is assumed t
         \---Inertial Signals
                 ... (detail omitted)
 
-(The "Inertial Signals" folders contain derived values which are not needed here.)        
+(The "Inertial Signals" folders contain the raw sensor measurements which are not needed here.)        
     
 In the top level of the dataset tree, README.txt gives some context for the study and an overview of the organization of the dataset across the various files, while features_info.txt provides a more detailed explanation of the feature observations (sensor readings) that were gathered.
 
