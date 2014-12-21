@@ -595,6 +595,7 @@ The actual data sets, X_test.txt and X_train.txt, are rows of 561 floating point
 There are 7352 observations in the training set and 2947 in the test set, for a total of 10,299 observations in the combined data set.
 
 After processing, the dta_tidy and dta_summ DFs have this structure:
+
 |column name| note |
 |-----------|------|
 |activity.name         | descriptive name ("WALKING", "LAYING", etc.) from activity_labels |
